@@ -13,11 +13,13 @@
 	<!-- Navigation bar -->
 	<div id="navigation-bar">
 		<ul>
-			<li id="name"><a href>Brendan Holmes</a></li>
-			<li><a href>Projects</a></li>
-			<li><a href="./about.html">About</a></li>
-			<li><a href="#footer">Contact</a></li>
-			<li><a href="./resume.pdf">CV</a></li>
+			<li id="name"><a href="./index.html">Brendan Holmes</a></li>
+			
+			<div id="navigation-bar-links">
+				<li class="link"><a href="./index.html">Projects</a></li>
+				<li class="link"><a href="./about.html">About</a></li>
+				<li class="link"><a href="./resume.pdf">CV</a></li>
+			</div>
 		</ul>
 	</div>
 
@@ -26,7 +28,7 @@
 		<h2>Projects</h2>
 		<div class="project-item">
 			<div class="project-image">
-				<div id="project1"><img class="contact-icon" src="./images/cyclone-v-dev-kit.jpg"></div>
+				<div id="project1"><img class="image" src="./images/bird.jpg"></div>
 			</div>
 			<h3>Embedded multicore image decoder</h3>
 			<p>On an ALtera FPGA board, this system decodes compressed 640x480 mpeg video at 24fps. An IDCT hardware accelerator, written in VHDL, handles the most computationally intensive function. Developed at the University of Waterloo for ECE423: Embedded Computer Systems.</p>
@@ -35,7 +37,7 @@
 
 		<div class="project-item">
 			<div class="project-image">
-				<div id="project1"><img class="image" src="./images/main_05.png"></div>
+				<div id="project1"><img class="image" src="./images/main_05.jpg"></div>
 			</div>
 			<h3>SLIC Superpixel algorithm implementation</h3>
 			<p>Implemented a state-of-the-art superpixel algorithm based on current image science literature. Developed at the University of Waterloo.</p>
@@ -44,7 +46,7 @@
 
 		<div class="project-item">
 			<div class="project-image">
-				<div id="project1"><img class="contact-icon" src="./images/goat-graphic.jpg"></div>
+				<div id="project1"><img class="image" src="./images/goat-graphic.jpg"></div>
 			</div>
 			<h3>Real-time OS</h3>
 			<p>A single-threaded multiprogramming operating system that runs on an ARM microprocessor. Performs memory management, process dispatching and switching, interprocess communication, UART and timer interrupts and runs user processes using a custom command set. Developed at the University of Waterloo.</p>
@@ -53,7 +55,7 @@
 
 		<div class="project-item">
 			<div class="project-image">
-				<div id="project1"><img class="image" src="./images/run-tracker.png"></div>
+				<div id="project1"><img class="image" src="./images/run-tracker.jpg"></div>
 			</div>
 			<h3>Run Tracker</h3>
 			<p>Run Tracker saves your paths, generates useful statistics, and works on most smartphones. Using Google Maps APIs, this is a snappy and powerful mobile web app. This project was developed for a software design unit at Monash University</p>
@@ -63,7 +65,7 @@
 	</div>
 
 		<div id="footer">
-		<ul>
+		<ul class="contact-container">
 			<li><a href="mailto:beholmes@uwaterloo.ca"><img class="contact-icon" src="./images/email-icon.png"></a></li>
 			<li><a href="https://www.github.com/brendanholmes"><img class="contact-icon" src="./images/GitHub-Mark.png"></a></li>
 			<li><a href="https://instagram.com/brendanholmes1"><img class="contact-icon" src="./images/instagram-icon.png"></a></li>

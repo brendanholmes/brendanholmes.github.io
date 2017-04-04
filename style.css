@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font: 13px/18px 'Lucida Grande',Arial,sans-serif;
-    background: #FFFFFF;
+    background: #EFEFEF;
     color: #000;
 }
 
@@ -15,10 +15,11 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #FFF;
 	padding: 12px 100px 12px 12px;
 	font-size: 20px;
 	color: #000;
+
 }
 
 li {
@@ -27,18 +28,33 @@ li {
 
 li a {
     display: block;
-    color: white;
+    color: black;
     text-align: right;
     padding: 25px 20px;
     text-decoration: none;
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #111;
+/*li a:hover {
+    background-color: #999;
+}*/
+
+.contact-container {
+	border-color: #222;
+	border-width: 10px;
+}
+.contact-container:hover .contact-icon{
+	opacity: 0.6;
+}
+
+.contact-container .contact-icon:hover {
+	opacity: 1.0;
+	height: 65px; 
+	width: auto;
 }
 
 .contact-icon {
+	padding: 10px 20px;
 	height: 57px;
 	width: auto;
 }
@@ -47,6 +63,7 @@ li a:hover {
 	margin: 50px 65px;
     padding: 0 0;
     max-width: 900px;
+	
 }
 
 .project-item {
@@ -60,16 +77,16 @@ li a:hover {
 	border-width: 6px;
 	border-style: solid;
 	border-radius: 8px;
-	border-color: grey;
+	border-color: #999;
 	padding: 0 0 0 0;
 	margin: 0 40px 0 0;
 	float: left;
-	background: #111111;
+	background: #999;
 }
 
 .image {
-	width: 200px;
-	height: 200px;
+	width: 100%;
+	height: 100%;
 }
 
 .profile-image {
@@ -77,31 +94,6 @@ li a:hover {
 	height: 175px;
 }
 
-/*
-.padded {
-    margin: auto;
-    padding: 0 35px;
-    max-width: 900px;
+.link:hover a{
+	font-size: 25px;
 }
-
-.project {
-    margin: 80px 0;
-    padding: 0 0 0 360px;
-}
-
-.project .image {
-    padding: 0 0 80px;
-    margin-left: -360px;
-    float: left;
-}
-
-.project #project1 {
-    background: url(../images/grey.jpg);
-}
-
-.project .image>div {
-    padding: 10px;
-    background: #4F4F4F;
-    border-radius: 20px;
-}
-*/
