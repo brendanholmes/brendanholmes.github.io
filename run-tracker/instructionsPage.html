@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+      
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <title>Run Tracker (Team 036)</title>
+      <meta name="description" content="ENG1003 Assignment 2B S2 2015">
+      <meta name="author" content="team 36">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+      
+      
+    <style type="text/css">
+      html, body { height: 100%; margin: 10; padding: 10; }
+      #map { height: 100%; }
+        
+        #message-area
+        {
+            display: block;
+            position: relative;
+            width: 90%;
+            text-align: left;
+            bottom: 2;
+            margin: auto;
+            font-family: Roboto;
+            font-size: 20px;
+        }
+        
+    </style>
+      
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+              <!-- Title -->
+              <span class="mdl-layout-title">RUN TRACKER</span>
+              <!-- Add spacer, to align navigation to the right -->
+              <div class="mdl-layout-spacer"></div>
+              <!-- Navigation. We hide it in small screens. -->
+                  <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <!-- <a class="mdl-navigation__link" href="">Home</a>
+                    <a class="mdl-navigation__link" href="">Previous Runs</a>
+                    <a class="mdl-navigation__link" href="">Settings</a> -->
+
+                  </nav>
+            </div>
+        </header>
+
+    <!-- Navigation tabs -->
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">RUN TRACKER</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="instructionsPage.html">Instructions</a>
+            <a class="mdl-navigation__link" href="runTrackerHomePage.html">Home</a>
+            <a class="mdl-navigation__link" href="runTrackerPreviousRunsPage.html">Previous Runs</a>
+            <a class="mdl-navigation__link" id="log-in-Out-button" href="index.html">ERROR</a>
+
+        </nav>
+      </div>   
+
+        <style>
+          h3 {text-align: left;}
+          p {text-align: left;}
+        </style>
+        
+  </head>
+    
+  <body>
+<div id="message-area">
+      
+    <h3> Welcome to the Instructions page for Run Tracker!<br/></h3>
+        1. Click on the top left menu to select what you want to do.<br/>
+        2. To start a run, select 'Home' and tap the START button! Your run will start<br/>
+        recording and your route will be shown on the screen.<br/>
+        3. To stop recording your run, tap the STOP button. You will be asked to name your saved route.<br/>
+        4. To view your saved routes, select 'Previous Runs' from the menu. All your saved routes will be shown there!<br/>
+        5. On the 'Previous Runs' page, you can choose to view more details about your routes or delete your routes.<br/>
+    <h4>Have fun using Run Tracker!</h4>
+      
+      </div>
+
+      
+    <script>
+        
+          
+            var loginStatus = JSON.parse(localStorage.getItem("loginStatus")); //Retrieve login status from localstorage
+            if (loginStatus === false) {
+                document.getElementById("log-in-Out-button").innerHTML = "Log in"; //Changes button to login..
+            } else if (loginStatus === true) {
+                document.getElementById("log-in-Out-button").innerHTML = "Log out"; //or logout, depending on what it says
+            } else {
+                window.location.href = "index.html"; //If there is no loginstatus, redirect to login!
+            }
+          
+      </script>
+      
+  </body>
+</html>
