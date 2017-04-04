@@ -2,69 +2,77 @@
 <html>
 <head>
 
-	<!-- MDL files-->
+	<!-- 
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    -->
 
     <!-- Custom style sheets-->
     <link rel="stylesheet" href="style/style.css">
-
     <title>Brendan Holmes</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+
 </head>
 		
 <body>	
-
 	<!-- Navigation bar -->
-	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" id="nav-bar">
-	  <header class="mdl-layout__header">
-	    <div class="mdl-layout__header-row">
-	      <!-- Title -->
-	      <span class="mdl-layout-title">Brendan Holmes</span>
-	      <!-- Add spacer, to align navigation to the right -->
-	      <div class="mdl-layout-spacer"></div>
-	      <!-- Navigation. We hide it in small screens. -->
-	      <nav class="mdl-navigation">
-	        <a class="mdl-navigation__link" href="#home">Home</a>
-	        <a class="mdl-navigation__link" href="#contact">Contact</a>
-	        <a class="mdl-navigation__link" href="./resume.pdf">CV</a>
-	      </nav>
-	    </div>
-	  </header>
+	<div id="navigation-bar">
+		<ul>
+			<li id="name"><a href>Brendan Holmes</a></li>
+			<li><a href>Home</a></li>
+			<li><a href="#footer">Contact</a></li>
+			<li><a href="./sresume.pdf">CV</a></li>
+		</ul>
 	</div>
 
-	<!-- spacer -->
-	<br><br><br>
-
 	<!-- home -->
-	<section id="home">
-		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--4-col"><img id="project-icon" src="./grey.jpg"></div>
-			<div class="mdl-cell mdl-cell--4-col"><img id="project-icon" src="./grey.jpg"></div>
-			<div class="mdl-cell mdl-cell--4-col"><img id="project-icon" src="./grey.jpg"></div>
+	<div class="main">
+		<div class="project-item">
+			<div class="project-image">
+				<div id="project1"><img class="contact-icon" src="./images/instagram-icon.png"></div>
+			</div>
+			<h3>Embedded multicore image decoder</h3>
+			<p>Description</p>
+			<p><a href=""></a> link to project</p>
 		</div>
-	</section>
 
-	<!-- contact -->
-	<section id="contact">
-	<p>Contact</p>
-	<table class="contacttable" align="center">
-                <tbody><tr>
-                <td><a class="instagram" href="https://instagram.com/brendanholmes1" target="_newtab"></a></td>
-                <td><a class="email" href="mailto:beholmes@uwaterloo.ca"></a></td>
-                <td><a class="github" href="https://www.github.com/brendanholmes" target="_newtab"></a></td>
-            </tr></tbody></table>  
-	</section>
-	
-	<!--footer-->
-	<footer class="mdl-mini-footer">
-		<div class="mdl-mini-footer__left-section">
-			<ul class="mdl-mini-footer__link-list">
-				<li><a href="#nav-bar">return to top</a></li>
-			</ul>
+		<div class="project-item">
+			<div class="project-image">
+				<div id="project1"><img class="contact-icon" src="./images/instagram-icon.png"></div>
+			</div>
+			<h3>SLIC Superpixel algorithm implementation</h3>
+			<p>Implemented a state-of-the-art superpixel algorithm from research paper in MATLAB</p>
+			<p><a href="./superpixels/main.html"></a>View project</p>
 		</div>
-	</footer>
+
+		<div class="project-item">
+			<div class="project-image">
+				<div id="project1"><img class="contact-icon" src="./images/instagram-icon.png"></div>
+			</div>
+			<h3>Real time OS</h3>
+			<p>Description</p>
+			<p><a href=""></a> link to project</p>
+		</div>
+
+		<div class="project-item">
+			<div class="project-image">
+				<div id="project1"><img class="image" src="./images/run-tracker.png"></div>
+			</div>
+			<h3>Run Tracker</h3>
+			<p>Description</p>
+			<p><a href=""></a> link to project</p>
+		</div>
+	</div>
+
+		<div id="footer">
+		<ul>
+			<li><a href="mailto:beholmes@uwaterloo.ca"><img class="contact-icon" src="./images/email-icon.png"></a></li>
+			<li><a href="https://www.github.com/brendanholmes"><img class="contact-icon" src="./images/GitHub-Mark.png"></a></li>
+			<li><a href="https://instagram.com/brendanholmes1"><img class="contact-icon" src="./images/instagram-icon.png"></a></li>
+			<li><a href="https://www.linkedin.com/in/brendan-holmes-846a5641/"><img class="contact-icon" src="./images/linkedin-icon.png"></a></li>
+		</ul>
+	</div>
 </body>
 </html>
 

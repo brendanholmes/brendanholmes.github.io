@@ -1,0 +1,339 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>main</title><meta name="generator" content="MATLAB 9.1"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-03-19"><meta name="DC.source" content="main.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">ECE417 PROJECT: SLIC Superpixels Compared to State-of-the-Art Superpixel Methods</a></li><li><a href="#3">Problem formulation - Effecient and accurate superpixel algorithms</a></li><li><a href="#6">Proposed solution - SLIC Superpixels</a></li><li><a href="#10">Data sources</a></li><li><a href="#14">Solution - detailed description of SLIC algorithm (move the details to code once complete, and keep only the 'steps' or make every 'step' a function</a></li><li><a href="#32">Visualisation of results</a></li><li><a href="#37">Analysis and conclusions</a></li><li><a href="#46">Custom source files/functions <b>REMEMBER TO INCLUDE THE FILES IN THE HTML/PROJECT DIR</b></a></li><li><a href="#51">References <b>Use Chicago style referencing</b></a></li></ul></div><h2 id="1">ECE417 PROJECT: SLIC Superpixels Compared to State-of-the-Art Superpixel Methods</h2><p><i>by Brendan Holmes</i></p><pre class="codeinput">clc; close <span class="string">all</span>; clear <span class="string">all</span>
+</pre><p>This project implements the algorithm presented in the paper <i>SLIC Superpixels Compared to State-of-the-Art Superpixel Methods</i> [1].</p><h2 id="3">Problem formulation - Effecient and accurate superpixel algorithms</h2><p>*What are they are and why are they used: * Superpixels are groupings of pixels used to reduce the complexity of subsequent image segmentation operations. Algorithms take as an input N superpixels, where the image is segmented into N groups.</p><p>Pixels inside a superpixel should be similar, and thus the boundaries between superpixels should maintain image boundaries. We desire that groups be approximately uniform in size, which is known as 'compactness'. However, this may come at the cost of adherence to image boundaries since the natural regions of an image may not correlate with the superpixel 'grid'. A good algorithm should balance these two criteria and will benefit further processing.</p><p>Computational efficiency is also important to minimize, and with the fastest state-of-the-art methods computing approximately linearly in image size, for example [2].</p><h2 id="6">Proposed solution - SLIC Superpixels</h2><p>The SLIC Superpixels algorithm is based on <i>k</i> -means clustering. In <i>k</i>-means clustering, data is first divided into <i>k</i> clusters with mean mu.</p><p>Then the following two steps are repeated until there is no change:</p><div><ol><li>Each data point is assigned to the cluster with the closest mean. In simple implementations, every data point is compared with every cluster, which results in a computational complexity of <img src="main_eq11960365611340753555.png" alt="$O(k^N)$" style="width:40px;height:17px;"> [1].</li><li>The mean of each cluster is recalculated using the new cluster members.</li></ol></div><p>Initial clustering has a non-trivial impact on results, and must be considered.</p><p>The SLIC algorithm basically follows this two-step process. Pixel and mean values are given a weighting depending on location in the colour-space and physical location in image. The distance uses both these attributes and the weighting coefficients provide control over compactness.</p><p>To reduce the complexity of the SLIC algorithm, in the assignment step, each pixel is only compared with clusters in a local neighbourhood.</p><h2 id="10">Data sources</h2><p>The required inputs are a colour image and a number of segments <i>k</i> . This project can handle most image file types. <i>k</i> must be a positive integer less than the number of pixels in the image. <i>k</i> values are generally between 50 and 1000.</p><p>test algorith define array of images and array of k values for testing</p><pre class="codeinput">kArr = [100, 600, 100, 600];
+im1 = imread(<span class="string">'fish.jpg'</span>); im2 = imread(<span class="string">'xray.jpg'</span>);
+<span class="keyword">for</span> im_test = 1:4
+</pre><pre class="codeinput"><span class="comment">% Define input image</span>
+<span class="keyword">if</span> im_test &lt;=2
+    im = im1;
+<span class="keyword">else</span>
+    im = im2;
+<span class="keyword">end</span>
+im = imresize(im, 0.1); <span class="comment">% temporary</span>
+im = rgb2lab(im); <span class="comment">% Images are converted into CIELAB colour space.</span>
+height = size(im, 1);
+width = size(im, 2);
+</pre><p>Define input parameter <i>k</i></p><pre class="codeinput">k = kArr(im_test);
+</pre><h2 id="14">Solution - detailed description of SLIC algorithm (move the details to code once complete, and keep only the 'steps' or make every 'step' a function</h2><p><b>Initialization</b></p><p>First, we initialise the centres of the clusters. Clusters are evenly spread over the image in a grid with interval</p><p><img src="main_eq06632655893182295499.png" alt="$S = \sqrt{\frac{height*width}{k}}$" style="width:108px;height:27px;"></p><p>We return an array of length <i>k</i> that contains the weighted mean of each cluster.</p><pre class="codeinput">S = sqrt((height*width)/k);         <span class="comment">% grid interval</span>
+</pre><p>workaround to ensure k is grid is full</p><pre class="codeinput"><span class="keyword">if</span> ceil(height/S)*ceil(width/S) &gt; k
+    k = ceil(height/S)*ceil(width/S);
+<span class="keyword">end</span>
+C = initCentres(im, k, S);             <span class="comment">% initialise cluster centres</span>
+</pre><p>Each cluster is given a label from 1 and <i>k</i> and we store the cluster label for each pixel in a 2D array. We initialise cluster labels to -1, an invalid value.</p><pre class="codeinput">label = ones(height, width) - 2;
+</pre><p>The distance from each pixel to its current cluster mean is used to compare with other clusters. We initialise the distance to <i>inf</i> so that it changes on the first iteration.</p><pre class="codeinput">dist = ones(height, width)./0;
+numChanges = inf; <span class="comment">% used to end loop if convergence</span>
+</pre><p><b>Iterate until convergence</b></p><pre class="codeinput"><span class="keyword">for</span> iter = 1:10 <span class="comment">% algorithm should converge within 10 iterations</span>
+</pre><p><b>Assignment</b></p><p>Compare distance to current cluster mean with distance to means of clusters in a local neighbourhood. Assign pixel to cluster with closet mean. Distance is weighted using the following equation:</p><p><img src="main_eq11229842668912369353.png" alt="$D = \sqrt{d_c^2+(\frac{d_s}{S})^2*m^2}$" style="width:142px;height:27px;"></p><p>where <img src="main_eq11319871188381094158.png" alt="$m$" style="width:13px;height:7px;"> is equal to a <i>COMPACTNESS</i> constant multiplied by <img src="main_eq14663648698641962978.png" alt="$S$" style="width:10px;height:11px;">, <img src="main_eq00947125635114267294.png" alt="$d_c$" style="width:13px;height:13px;"> is the Euclidean distance between color components in CIELAB color space, and <img src="main_eq07706237150736624703.png" alt="$d_s$" style="width:12px;height:13px;"> is the Euclidean distance between <img src="main_eq10772030214071199617.png" alt="$(x, y)$" style="width:32px;height:15px;"> coordinates. If the pixel changes to a new cluster, the distance to that cluster is stored in <img src="main_eq14265421315800500232.png" alt="$dist(i, j)$" style="width:54px;height:15px;"></p><pre class="codeinput">[label_new, dist] = assignPixels(im, C, k, S, label, dist);
+<span class="keyword">if</span> any(any(label_new == -1)==1) <span class="comment">% DEBUGGING</span>
+    error(<span class="string">'ERR: label_new contains -1 values'</span>)
+<span class="keyword">end</span>
+</pre><p><b>Update</b></p><p>We iterate through every pixel, add the colour and spatial values of that pixel to a running total for each cluster, then divide by the number of pixels in each cluster to obtain the arithmetic mean.</p><pre class="codeinput">C = updateCentres(im, label_new, k);
+</pre><p>If the number of pixels that change clusters is less than a threshold, finish iterating.</p><pre class="codeinput">THRESHOLD = 0.01*height*width+10; <span class="comment">% percent of pixels plus a constant for small images</span>
+numChanges = sum(sum(label_new ~= label));
+<span class="keyword">if</span> numChanges &lt; THRESHOLD
+    <span class="keyword">break</span>;
+<span class="keyword">end</span>
+label = label_new;
+</pre><pre class="codeinput"><span class="keyword">end</span> <span class="comment">% end iterating</span>
+</pre><p>Enforce connectivity for 'orphaned' pixels. If a single pixel is surrounded by more than 4 pixels of a different cluster, assign that pixel to the other cluster. Not useful for small groups of orphaned pixels.</p><pre class="codeinput">label = removeOrphans(im, label);
+</pre><h2 id="32">Visualisation of results</h2><p>Segmented image with line boundaries <b>IS SEGMENTED CORRECT TERM??</b></p><pre class="codeinput">lines1 = edge(mod(mod(label, width/S), 2), <span class="string">'sobel'</span>); <span class="comment">% get vert lines</span>
+lines2 = edge(label, <span class="string">'sobel'</span>);  <span class="comment">% get horz lines</span>
+lines = lines1+lines2;
+figure; imshow(lab2rgb(im) + lines);
+</pre><img vspace="5" hspace="5" src="main_01.png" style="width:469px;height:338px;" alt=""> <img vspace="5" hspace="5" src="main_03.png" style="width:469px;height:338px;" alt=""> <img vspace="5" hspace="5" src="main_05.png" style="width:389px;height:378px;" alt=""> <img vspace="5" hspace="5" src="main_07.png" style="width:389px;height:378px;" alt=""> <p>Segmented image with average colour value for every superpixel</p><pre class="codeinput">im_out = zeros(height, width, 3);
+<span class="keyword">for</span> i = 1:height
+    <span class="keyword">for</span> j = 1:width
+        im_out(i, j, :) = C(label(i, j), 1:3);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+figure; imshow(lab2rgb(im_out))
+</pre><img vspace="5" hspace="5" src="main_02.png" style="width:469px;height:338px;" alt=""> <img vspace="5" hspace="5" src="main_04.png" style="width:469px;height:338px;" alt=""> <img vspace="5" hspace="5" src="main_06.png" style="width:389px;height:378px;" alt=""> <img vspace="5" hspace="5" src="main_08.png" style="width:389px;height:378px;" alt=""> <pre class="codeinput"><span class="keyword">end</span> <span class="comment">% end image_test loop</span>
+</pre><h2 id="37">Analysis and conclusions</h2><p><b>Results</b></p><p>As shown in the visualisation, I was able to reproduce the results reported in the original paper. The algorithm behaved as expected, and demonstrates to be a simple and effective superpixel algorithm.</p><p><b>Performance</b> <tt>FILL IN</tt></p><p>There are a number of constant values that that were obtained through testing that affect the quality of the result. It was found that a <i>COMPACTNESS</i> constant value of between 2 and 6 was optimum. For the convergence threshold, it was found that if less than 1% of pixels changed clusters, the algorithm had sufficiently converged</p><p><b>Drawbacks and issues</b></p><p>Enforce connectivity function (removeOrphans) helps with lone pixels, but doesn't actually ensure all pixels in a superpixel are connected.</p><p>Encountered problems initialising the grid of superpixels. Used a workaround where if S due to k doesn't result in a square grid, we change k by adding up to an entire row or column of superpixels.</p><p>Drawing superpixel edge lines doesn't always work, but this doesn't affect functionality of algorithm</p><h2 id="46">Custom source files/functions <b>REMEMBER TO INCLUDE THE FILES IN THE HTML/PROJECT DIR</b></h2><p><a href="initCentres.m">initCentres.m</a></p><p><a href="assignPixels.m">assignPixels.m</a></p><p><a href="updateCentres.m">updateCentres.m</a></p><p><a href="removeOrphans.m">removeOrphans.m</a> enforceConnectivity??</p><h2 id="51">References <b>Use Chicago style referencing</b></h2><p>[1] Achanta, Radhakrishna, Appu Shaji, Kevin Smith, Aurelien Lucchi, Pascal Fua, and Sabine S&uuml;sstrunk. "SLIC superpixels compared to state-of-the-art superpixel methods." IEEE transactions on pattern analysis and machine intelligence 34, no. 11 (2012): 2274-2282. Harvard</p><p>[2] Levinshtein, Alex, Adrian Stere, Kiriakos N. Kutulakos, David J. Fleet, Sven J. Dickinson, and Kaleem Siddiqi. "Turbopixels: Fast superpixels using geometric flows." IEEE transactions on pattern analysis and machine intelligence 31, no. 12 (2009): 2290-2297. Harvard</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% ECE417 PROJECT: SLIC Superpixels Compared to State-of-the-Art Superpixel Methods
+% _by Brendan Holmes_
+clc; close all; clear all
+%%
+% This project implements the algorithm presented in the paper _SLIC
+% Superpixels Compared to State-of-the-Art Superpixel Methods_ [1].
+%% Problem formulation - Effecient and accurate superpixel algorithms
+% *What are they are and why are they used: *
+% Superpixels are groupings of pixels used to reduce the complexity of
+% subsequent image segmentation operations. Algorithms take as an input N 
+% superpixels, where the image is segmented into N groups. 
+%%
+% Pixels inside a superpixel should be similar, and thus the boundaries 
+% between superpixels should maintain image boundaries. We desire that 
+% groups be approximately uniform in size, which is known as 
+% 'compactness'. However, this may come at the cost of adherence to image 
+% boundaries since the natural regions of an image may not correlate with 
+% the superpixel 'grid'. A good algorithm should balance these two 
+% criteria and will benefit further processing.
+%%
+% Computational efficiency is also important to minimize, and with the
+% fastest state-of-the-art methods computing approximately linearly in
+% image size, for example [2].
+
+%% Proposed solution - SLIC Superpixels
+% The SLIC Superpixels algorithm is based on _k_ -means clustering. In 
+% _k_-means clustering, data is first divided into _k_ clusters with mean 
+% mu. 
+%%
+% Then the following two steps are repeated until there is no change:
+% 
+% # Each data point is assigned to the cluster with the closest mean. In 
+% simple implementations, every data point is compared with every cluster,
+% which results in a computational complexity of $O(k^N)$ [1].
+% # The mean of each cluster is recalculated using the new cluster members.
+% 
+% Initial clustering has a non-trivial impact on results, and must be
+% considered.
+%%
+% The SLIC algorithm basically follows this two-step process. Pixel and
+% mean values are given a weighting depending on location in the
+% colour-space and physical location in image. The distance uses both these
+% attributes and the weighting coefficients provide control over
+% compactness.
+%%
+% To reduce the complexity of the SLIC algorithm, in the assignment step, 
+% each pixel is only compared with clusters in a local neighbourhood.
+
+%% Data sources
+% The required inputs are a colour image and a number of
+% segments _k_ . This project can handle most image file types. _k_ must 
+% be a positive integer less than the number of pixels in the image. 
+% _k_ values are generally between 50 and 1000.
+%%
+% test algorith
+% define array of images and array of k values for testing
+kArr = [100, 600, 100, 600];
+im1 = imread('fish.jpg'); im2 = imread('xray.jpg');
+for im_test = 1:4
+% Define input image
+if im_test <=2
+    im = im1;
+else
+    im = im2;
+end
+im = imresize(im, 0.1); % temporary
+im = rgb2lab(im); % Images are converted into CIELAB colour space.
+height = size(im, 1);
+width = size(im, 2);
+%%
+% Define input parameter _k_
+k = kArr(im_test); 
+%% Solution - detailed description of SLIC algorithm (move the details to code once complete, and keep only the 'steps' or make every 'step' a function
+%% 
+% *Initialization*
+%%
+% First, we initialise the centres of the clusters. Clusters are evenly
+% spread over the image in a grid with interval
+%%
+% $S = \sqrt{\frac{height*width}{k}}$
+%%
+% We return an array of length _k_ that contains the weighted mean of each
+% cluster.
+S = sqrt((height*width)/k);         % grid interval
+%%
+% workaround to ensure k is grid is full
+if ceil(height/S)*ceil(width/S) > k
+    k = ceil(height/S)*ceil(width/S);
+end
+C = initCentres(im, k, S);             % initialise cluster centres
+%%
+% Each cluster is given a label from 1 and _k_ and we store the cluster
+% label for each pixel in a 2D array. We initialise cluster labels to -1, 
+% an invalid value.
+label = ones(height, width) - 2;
+%%
+% The distance from each pixel to its current cluster mean is used to
+% compare with other clusters. We initialise the distance to _inf_ so that
+% it changes on the first iteration.
+dist = ones(height, width)./0;
+numChanges = inf; % used to end loop if convergence
+%%
+% *Iterate until convergence*
+for iter = 1:10 % algorithm should converge within 10 iterations
+%%
+% *Assignment*
+%%
+% Compare distance to current cluster mean with distance to means of
+% clusters in a local neighbourhood. Assign pixel to cluster with closet
+% mean. Distance is weighted using the following equation:
+%%
+% $D = \sqrt{d_c^2+(\frac{d_s}{S})^2*m^2}$
+%%
+% where $m$ is equal to a _COMPACTNESS_ constant multiplied by $S$, $d_c$ 
+% is the Euclidean distance
+% between color components in CIELAB color space, and $d_s$ is the
+% Euclidean distance between $(x, y)$ coordinates. If the pixel changes to
+% a new cluster, the distance to that cluster is stored in $dist(i, j)$
+[label_new, dist] = assignPixels(im, C, k, S, label, dist);
+if any(any(label_new == -1)==1) % DEBUGGING
+    error('ERR: label_new contains -1 values') 
+end
+%%
+% *Update*
+%%
+% We iterate through every pixel, add the colour and spatial values of that 
+% pixel to a running total for each cluster, then divide by the number of
+% pixels in each cluster to obtain the arithmetic mean.
+C = updateCentres(im, label_new, k);
+%%
+% If the number of pixels that change clusters is less than a threshold,
+% finish iterating.
+THRESHOLD = 0.01*height*width+10; % percent of pixels plus a constant for small images
+numChanges = sum(sum(label_new ~= label));
+if numChanges < THRESHOLD
+    break;
+end
+label = label_new;
+end % end iterating
+%%
+% Enforce connectivity for 'orphaned' pixels. If a single pixel is
+% surrounded by more than 4 pixels of a different cluster, assign that 
+% pixel to the other cluster. Not useful for small groups of orphaned
+% pixels.
+label = removeOrphans(im, label);
+%% Visualisation of results
+%%
+% Segmented image with line boundaries *IS SEGMENTED CORRECT TERM??*
+lines1 = edge(mod(mod(label, width/S), 2), 'sobel'); % get vert lines
+lines2 = edge(label, 'sobel');  % get horz lines
+lines = lines1+lines2;
+figure; imshow(lab2rgb(im) + lines);
+%%
+% Segmented image with average colour value for every superpixel
+im_out = zeros(height, width, 3);
+for i = 1:height
+    for j = 1:width
+        im_out(i, j, :) = C(label(i, j), 1:3);
+    end
+end
+figure; imshow(lab2rgb(im_out))
+
+%%
+end % end image_test loop
+%% Analysis and conclusions
+%%
+% *Results*
+%%
+% As shown in the visualisation, I was able to reproduce the results 
+% reported in the original paper. The algorithm behaved as expected, and
+% demonstrates to be a simple and effective superpixel algorithm.
+%%
+% *Performance*
+% |FILL IN|
+%%
+% There are a number of constant values that that were obtained through 
+% testing that affect the quality of the result. It was found that a
+% _COMPACTNESS_ constant value of between 2 and 6 was optimum. For the
+% convergence threshold, it was found that if less than 1% of pixels
+% changed clusters, the algorithm had sufficiently converged
+%%
+% *Drawbacks and issues*
+%%
+% Enforce connectivity function (removeOrphans) helps with lone 
+% pixels, but doesn't actually ensure all pixels in a superpixel are
+% connected.
+%%
+% Encountered problems initialising the grid of superpixels. Used a
+% workaround where if S due to k doesn't result in a square grid, we change
+% k by adding up to an entire row or column of superpixels.
+%%
+% Drawing superpixel edge lines doesn't always work, but this doesn't
+% affect functionality of algorithm
+
+%% Custom source files/functions *REMEMBER TO INCLUDE THE FILES IN THE HTML/PROJECT DIR*
+%%
+% <initCentres.m>
+%%
+% <assignPixels.m>
+%%
+% <updateCentres.m>
+%%
+% <removeOrphans.m> 
+% enforceConnectivity??
+%% References *Use Chicago style referencing*
+%%
+% [1] Achanta, Radhakrishna, Appu Shaji, Kevin Smith, Aurelien Lucchi, 
+% Pascal Fua, and Sabine Süsstrunk. "SLIC superpixels compared to 
+% state-of-the-art superpixel methods." IEEE transactions on pattern 
+% analysis and machine intelligence 34, no. 11 (2012): 2274-2282.
+% Harvard	
+%%
+% [2] Levinshtein, Alex, Adrian Stere, Kiriakos N. Kutulakos, David J. 
+% Fleet, Sven J. Dickinson, and Kaleem Siddiqi. "Turbopixels: Fast 
+% superpixels using geometric flows." IEEE transactions on pattern analysis 
+% and machine intelligence 31, no. 12 (2009): 2290-2297. Harvard	
+
+
+##### SOURCE END #####
+--></body></html>
