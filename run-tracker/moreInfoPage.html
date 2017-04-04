@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+      
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <title>Run Tracker (Team 036)</title>
+      <meta name="description" content="ENG1003 Assignment 2B S2 2015">
+      <meta name="author" content="Brendan Holmes">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+      
+    <style type="text/css">
+      html, body { height: 100%; margin: 10; padding: 10; }
+      #map { height: 100%; }
+        
+        #message-area
+        {
+            display: block;
+            position: relative;
+            width: 100%;
+            text-align: center;
+            bottom: 2;
+            margin: auto;
+            font-size: 20px;
+            font-family: 'Roboto';
+            font-weight: 400;
+        }
+        
+    </style>
+      
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+              <!-- Title -->
+              <span class="mdl-layout-title">RUN TRACKER</span>
+              <!-- Add spacer, to align navigation to the right -->
+              <div class="mdl-layout-spacer"></div>
+              <!-- Navigation. We hide it in small screens. -->
+                  <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <!-- <a class="mdl-navigation__link" href="">Home</a>
+                    <a class="mdl-navigation__link" href="">Previous Runs</a>
+                    <a class="mdl-navigation__link" href="">Settings</a> -->
+
+                  </nav>
+            </div>
+        </header>
+
+    <!-- Navigation tabs -->
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">RUN TRACKER</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="instructionsPage.html">Instructions</a>
+            <a class="mdl-navigation__link" href="runTrackerHomePage.html">Home</a>
+            <a class="mdl-navigation__link" href="runTrackerPreviousRunsPage.html">Back to Previous Runs</a>
+            <a class="mdl-navigation__link" id="log-in-Out-button" href="index.html">ERROR</a>
+            
+
+        </nav>
+      </div>   
+        <style>
+          h3 {text-align: center;}
+          p {text-align: center;}
+        </style>
+        
+  </head>
+    
+  <body>
+    <div id="map"></div>
+      <div><br></div>
+        <div id="message-area"></div>
+      <br>
+      
+      
+      <script>
+        var loginStatus = JSON.parse(localStorage.getItem("loginStatus"));
+        if (loginStatus === false) {
+            document.getElementById("log-in-Out-button").innerHTML = "Log in";
+        } else if (loginStatus === true) {
+            document.getElementById("log-in-Out-button").innerHTML = "Log out";
+        } else {
+            window.location.href = "index.html";
+        };
+
+        var selectedRoute = localStorage.getItem("selectedRoute"); //this gives the key name of the selected route
+        var routeDetails = JSON.parse(localStorage.getItem(selectedRoute)); //this retrieves the selected route using that key name
+
+        var endPositionIndex = routeDetails.length - 1;
+        var pathPoints = []
+
+        for (var i = 2; i < routeDetails.length; i++) {
+            pathPoints.push({
+                lat: routeDetails[i].position.G,
+                lng: routeDetails[i].position.K
+            })
+        }
+
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: routeDetails[2].position.G,
+                    lng: routeDetails[2].position.K
+                },
+                zoom: 17
+            });
+
+            var startMarker = new google.maps.Marker({
+                position: {
+                    lat: routeDetails[2].position.G,
+                    lng: routeDetails[2].position.K
+                },
+                map: map,
+                title: "Start"
+            });
+
+            var endMarker = new google.maps.Marker({
+                position: {
+                    lat: routeDetails[endPositionIndex].position.G,
+                    lng: routeDetails[endPositionIndex].position.K
+                },
+                map: map,
+                title: "End"
+            });
+
+
+            var sportToMed = new google.maps.Polyline({
+                path: pathPoints,
+                map: map,
+                geodesic: true,
+                strokeColor: '#FF0999',
+                strokeOpacity: 1.0,
+                strokeWeight: 1,
+            });
+
+        }
+
+        messageArea = document.getElementById("message-area");
+        messageArea.innerHTML = "";
+        messageArea.innerHTML += "Route name: " + routeDetails[1].route_name + "<br/>";
+        messageArea.innerHTML += "Date: " + routeDetails[2].date + "<br/>";
+        messageArea.innerHTML += "Start Time: " + routeDetails[2].time + "    End Time:" + routeDetails[endPositionIndex].time + "<br/>";
+        messageArea.innerHTML += "Total Time: " + routeDetails[1].total_time + "<br/>";
+        messageArea.innerHTML += "Total Distance: " + routeDetails[1].distance.toFixed(2) + "m" + "<br/>";
+        messageArea.innerHTML += "Average Speed: " + routeDetails[1].speed.toFixed(2) + "m/s" + "<br/>";
+        messageArea.innerHTML += "Calories Burned: " + routeDetails[1].calorieBurn + " cal" + "<br/>"
+      </script>
+    
+      <script async defer
+  src="https://maps.googleapis.com/maps/api/js?v=3&amp;key=&amp;callback=initMap">"
+      </script>
+      
+
+
+  </body>
+</html>
