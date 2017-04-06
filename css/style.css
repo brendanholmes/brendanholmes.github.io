@@ -94,6 +94,7 @@ li {
 	text-align: justify;
     -moz-text-align-last: center;
     text-align-last: center;
+	opacity: 1.0;
 }
 
 #CV-home-link {
