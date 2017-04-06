@@ -78,9 +78,8 @@ li {
 #home {
 	padding: 0;
 	/*background-image: url("./images/home-background.jpg");*/
-		background-image: url("http://coolwildlife.com/wp-content/uploads/galleries/post-3004/Fox%20Picture%20003.jpg");
+	background-image: url(../images/cactus.png);
 	background-size: cover;
-	opacity: 0.6;
 }
 
 #welcome {
@@ -94,7 +93,6 @@ li {
 	text-align: justify;
     -moz-text-align-last: center;
     text-align-last: center;
-	opacity: 1.0;
 }
 
 #CV-home-link {
@@ -103,10 +101,11 @@ li {
 	
 	font-size: 25px;
 	padding: 18px 22px;
+	background: white;
+	opacity: 0.5;
 	border-style: solid;
 	border-width: 3px;
 	border-color: black;
-	color: red; /*debugging*/
 	width: 50px;
 }
 
@@ -186,17 +185,16 @@ li {
 
 /***FOOTER***/
 footer {
-	height: 120px;
+	height: 100%;
+	padding: 40px;
 	/*border-top: 1px solid #DDD;*/
 	background-color: #FFDAA3;
 }
 
 #contact-container {
-	margin: 50px auto;
-/*
-	margin-left: auto;
-	margin-right: auto;*/
-	width: 500px;
+	height: 100%;
+	margin: 0 auto;
+	max-width: 500px;
 }
 
 .contact-icon {
