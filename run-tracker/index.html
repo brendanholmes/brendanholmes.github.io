@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,7 +20,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     
         <style>
-            body {background-image: url("img/background-texture.png");}
+            body {background-image: url(images/home-screen.jpg); background-size: cover; opacity: 0.7;}
         </style>
         
     </head>
@@ -32,7 +31,7 @@
                 <header class="mdl-layout__header">
                     <div class="mdl-layout__header-row">
                         <!-- Title -->
-                        <span class="mdl-layout-title"><b>JUST DO IT!</b> Fitness Tracker</span>
+                        <span class="mdl-layout-title"><b>RUN</b>Tracker</span>
                         <!-- Add spacer, to align navigation to the right -->
                             <div class="mdl-layout-spacer"></div>
                         <!-- Navigation. We hide it in small screens. -->
@@ -46,9 +45,7 @@
 
                     <div class="mdl-card__title">
                         <div class="mdl-card__title-text">
-                            <h5>Welcome to the party! 
-                            <br>Please login here. 
-                            <br>If you are a new user, please tap 'Sign up' below. </h5>
+                            <h5>log in</h5>
                         </div>
                     </div>
 
@@ -70,7 +67,7 @@
                             </button>
 
                             <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="signUpPage.html">
-                            New here? Sign Up
+                            Create account
                             </a>
 
                             <br/> 
@@ -140,147 +137,5 @@
     
     </center>
 </body>
-=======
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Log in</title>
-        
-        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href = "https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
-        
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="description" content="ENG1003 Assignment 1 S2 2015">
-        <meta name="author" content="Group 36">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-        
-        <link rel="shortcut icon" sizes="196x196" href="bubble-icon.png" />
-        <link rel="apple-touch-icon-precomposed" href="bubble-icon.png" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    
-        <style>
-            body {background-image: url("img/background-texture.png");}
-        </style>
-        
-    </head>
 
-    <body id="body">
-        <center>
-            <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-                <header class="mdl-layout__header">
-                    <div class="mdl-layout__header-row">
-                        <!-- Title -->
-                        <span class="mdl-layout-title"><b>JUST DO IT!</b> Fitness Tracker</span>
-                        <!-- Add spacer, to align navigation to the right -->
-                            <div class="mdl-layout-spacer"></div>
-                        <!-- Navigation. We hide it in small screens. -->
-                        <nav class="mdl-navigation mdl-layout--large-screen-only">
-                        </nav>
-                    </div>
-                </header>
-                
-                
-                <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="login">
-
-                    <div class="mdl-card__title">
-                        <div class="mdl-card__title-text">
-                            <h5>Welcome to the party! 
-                            <br>Please login here. 
-                            <br>If you are a new user, please tap 'Sign up' below. </h5>
-                        </div>
-                    </div>
-
-                    <div class="mdl-card__actions mdl-card--border">
-
-                        <form id="form" action="#">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="username"/>
-                                <label class="mdl-textfield__label">Username (case sensitive)...</label>
-                            </div>
-
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="password" id="password" />
-                                <label class="mdl-textfield__label">Password...</label>
-                            </div>
-
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="processLogin()">
-                            Log in
-                            </button>
-
-                            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="signUpPage.html">
-                            New here? Sign Up
-                            </a>
-
-                            <br/> 
-
-                            <br/>
-
-                            <a href="runTrackerHomePage.html" onclick="updateLoginStatus(false)">
-                                Continue without logging in (no save function)
-                            </a>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-    
-        <script>
-        updateLoginStatus(false);
-
-        function processLogin() {
-            var username, password, retNames, storedNames, storedPasswords;
-            
-            username = document.getElementById("username").value;           //Retrieves username and password input
-            password = document.getElementById("password").value;
-            
-            document.getElementById("username").value = ""                  //Resets username and password boxes
-            document.getElementById("password").value = ""
-            
-            
-            if (localStorage.getItem("Usernames") === null) {               //Catch if there are no usernames in system
-                return alert("No users exist in the system yet! Please add one using the 'Sign Up' button below");
-            }
-            
-            else {
-                storedNames = JSON.parse(localStorage.getItem("Usernames"));    //Retrieve users/pass 3from local storage
-                storedPasswords = JSON.parse(localStorage.getItem("Passwords"));
-                
-                for (var i=0;i<storedNames.length;i++) {                        //Loops through existing usernames to find a match
-                    if (storedNames[i] == username) {                           //If a match is found
-                                                
-                        if (storedPasswords[i] === password) {                  //Compare to password in same array value
-                            updateLoginStatus(true);
-                            localStorage.setItem("loggedInUser",username);      //Set the logged in user in local storage
-                            return document.getElementById("form").action = "runTrackerHomePage.html";} //SUCCESSFUL LOGIN
-                        else {
-                            return alert("Your password is incorrect, try again") }                     //BAD PASSWORD
-                    }
-                }
-                
-                return alert("This user is not in the system. Please sign up below")                        //USER DOESN'T EXIST
-                
-            }
-            
-        }
-        
-        //status parameter must be true or false (boolean)
-        function updateLoginStatus(status){
-            if(status === false){
-                var loginStatus = false;                                        //Set local storage to false
-                localStorage.setItem("loginStatus", JSON.stringify(loginStatus))
-            }
-            else if(status === true){
-            var loginStatus = true;                                             //Set local storage to true
-            localStorage.setItem("loginStatus", JSON.stringify(loginStatus))
-            }             
-        }
-        </script>
-    
-    </center>
-</body>
->>>>>>> origin/master
 </html>
