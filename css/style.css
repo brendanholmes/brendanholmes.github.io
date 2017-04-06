@@ -80,7 +80,7 @@ li {
     margin-right: -50%;
     transform: translate(-50%, -50%);
 	font-size: 20px;
-	width: 420px;
+	max-width: 420px;
 	text-align: justify;
     -moz-text-align-last: center;
     text-align-last: center;
@@ -99,7 +99,7 @@ li {
 }
 
 #CV-home-link:hover {
-	opacity: 0.8;
+	opacity: 0.7;
 	background-color: #EEE;
 	
 }
