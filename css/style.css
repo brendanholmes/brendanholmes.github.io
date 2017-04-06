@@ -70,8 +70,6 @@ li {
 
 /***HOME**/
 #home {
-	height: 200px;
-	width: 200px;
 	padding: 0;
 }
 
@@ -81,29 +79,53 @@ li {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-	font-size: 25px;
+	font-size: 20px;
+	width: 420px;
+	text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
 }
 
 #CV-home-link {
+	display: block;
+	margin: 0 auto;
+	
 	font-size: 25px;
-	padding: 20px;
+	padding: 18px 22px;
 	border-style: solid;
 	border-width: 3px;
 	border-color: black;
-	text-align: center;
-	margin-top: 30px;
+	width: 50px;
 }
 
 #CV-home-link:hover {
-	background-color: #DDD;
+	opacity: 0.8;
+	background-color: #EEE;
+	
 }
 
 /***PROJECTS***/
+#projects {
+	position: relative;
+	min-height: 1250px;
+}
+#projects-container{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
 .project-item {
-	padding: 15px 0;
+	padding: 15px 15px;
 	margin: 50px 0;
 	height: 200px;
+	max-width: 650px;
+}
+
+.project-item:hover {
+	opacity: 0.7;
+	background: #EEE;
 }
 
 .project-image {
@@ -121,22 +143,32 @@ li {
 }
 
 /***ABOUT**/
+#about {
+	position: relative;
+}
 #about-content-container {
-	border-width: 1px;
-	border-color: black;
-    padding: 10em;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%) 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -60%);
+}
+
+#about-blurb {
+	text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
+}
+
+#profile-image-container{
 }
 
 .profile-image{
-	width: 175px;
-	height: 175px;
 	display: block;
 	margin: 0 auto;
+	width: 180px;
+	height: 180px;
+	
+	
 }
 /*****/
 
