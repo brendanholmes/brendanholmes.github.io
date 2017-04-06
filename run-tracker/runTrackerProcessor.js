@@ -1,14 +1,18 @@
+
 var marker;
 var map;
 var recordingStatus = false; //Initial condition: not recording a run
 var recordedPath = []; //Initialise Path Array
 var initCentre = false; //Inititialising map to centre when user loads map
 var saveStatus = false; //Unsaved initial status
+
 setMessageArea(""); //Initialise message area
 var user = localStorage.getItem("loggedInUser"); //Finds the logged in user
 var GeoMarker;
-setMessageArea("Tap START to begin a new run!");         //Initialise message area to instruction for starting
 
+//GoogleMaps.loadUtilityLibrary('geolocationmarker.js');
+
+setMessageArea("Tap START to begin a new run!"); //Initialise message area to instruction for starting
 navigator.geolocation.watchPosition(tracker); //follows position indefinitely and location information goes to tracker function
 
 //Initialise the map
@@ -25,7 +29,7 @@ function initMap() {
     
 	map = new google.maps.Map(document.getElementById('map'), myOptions);
 
-	//Puts the blue circle and region around your location
+/* 	//Puts the blue circle and region around your location
     GeoMarker = new GeolocationMarker(map);            
     
 	//Set Geolocation marker options
@@ -44,7 +48,13 @@ function initMap() {
         alert('There was an error obtaining your position. Message: ' + e.message);
     });
 	//Apply geolocation to map
-    GeoMarker.setMap(map);
+    GeoMarker.setMap(map); */
+	
+	// We add a DOM event here to show an alert if the DIV containing the
+	// map is clicked.
+	//google.maps.event.addDomListener(mapDiv, 'click', function() {
+	//  window.alert('Map was clicked!');
+	//});
 }
 
 
