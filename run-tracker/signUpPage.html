@@ -15,13 +15,11 @@
         <meta name="description" content="ENG1003 Assignment 1 S2 2015">
         <meta name="author" content="Group 36">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-        
-        <link rel="shortcut icon" sizes="196x196" href="bubble-icon.png" />
-        <link rel="apple-touch-icon-precomposed" href="bubble-icon.png" />
+    
+        <link rel="stylesheet" href="css/style-getting-started.css">
+        <link rel="shortcut icon" href="/favicon.ico"/>
+        <title>Create account</title>
 
-        <style>
-            body {background-image: url("img/background-texture.png");}
-        </style>
         
     </head>
 
@@ -30,7 +28,7 @@
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
               <!-- Title -->
-              <span class="mdl-layout-title"><b>JUST DO IT!</b> Fitness Tracker</span>
+              <span class="mdl-layout-title"><b>RUN</b>Tracker</span>
               <!-- Add spacer, to align navigation to the right -->
               <div class="mdl-layout-spacer"></div>
               <!-- Navigation. We hide it in small screens. -->
@@ -45,11 +43,11 @@
 
        <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="signup">
             <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Sign Up!</h2>
+                <h2 class="mdl-card__title-text">Create account</h2>
             </div>
 
             <div class="mdl-card__supporting-text">
-                Please enter your username and password below. Note that both are case sensitive.
+                Create and account to save your runs. Run Tracker uses your browser's local storage.
             </div>
 
             <div class="mdl-card__actions mdl-card--border">
@@ -58,20 +56,20 @@
                     
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" id="signupUsername"/>
-                        <label class="mdl-textfield__label">Username...</label>
+                        <label class="mdl-textfield__label">Username (case sensitive)</label>
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="password" id="signupPassword" />
-                        <label class="mdl-textfield__label">Password...</label>
+                        <label class="mdl-textfield__label">Password</label>
                     </div>
                     
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="signup()">
-                        Sign Up & Log in
+                        Create account & log in
                     </button>
                     
                     <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="index.html">
-                        Back to log in
+                        Back
                     </a>
                     
                 </form>
