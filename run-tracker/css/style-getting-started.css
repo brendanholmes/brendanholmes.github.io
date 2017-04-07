@@ -1,5 +1,5 @@
 body {
-	background-image: url(images/home-screen.jpg); 
+	background-image: url(../images/home-screen.jpg); 
 	background-size: cover; 
 	opacity: 0.7; 
 	max-height: 500px;
