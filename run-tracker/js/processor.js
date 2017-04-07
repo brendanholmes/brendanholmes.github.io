@@ -8,34 +8,34 @@ var saveStatus = false; //Unsaved initial status
 
 setMessageArea(""); //Initialise message area
 var user = localStorage.getItem("loggedInUser"); //Finds the logged in user
-var GeoMarker;
 
-//GoogleMaps.loadUtilityLibrary('geolocationmarker.js');
-
-setMessageArea("Tap START to begin a new run!"); //Initialise message area to instruction for starting
 navigator.geolocation.watchPosition(tracker); //follows position indefinitely and location information goes to tracker function
 
 //Initialise the map
 function initMap() {
-    
-	map = new google.maps.Map(document.getElementById('map'), {zoom: 17});
+    var mapOptions = {
+        zoom: 17,
+        center: new google.maps.LatLng(-34.397, 150.644),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+	map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
     //Puts the blue circle and region around your location
-    GeoMarker = new GeolocationMarker(map);
+    var GeoMarker = new GeolocationMarker(map);
 
     //Map centres on your current position
-    google.maps.event.addListenerOnce(GeoMarker, 'position_changed', function() {      //Get geolocation marker to follow movement
+    //Get geolocation marker to follow movement
+/*    google.maps.event.addListenerOnce(GeoMarker, 'position_changed', function() {
         map.setCenter(this.getPosition());
         map.fitBounds(this.getBounds());
-    });
+    });*/
 /* 	            
     
 	//Set Geolocation marker options
 	GeoMarker.setCircleOptions({
         fillColor: '#808080'
     });
-
-	
 
 	//Print error message if GeoMarker fails
     google.maps.event.addListener(GeoMarker, 'geolocation_error', function(e) {         //Catch errors in geolocation
