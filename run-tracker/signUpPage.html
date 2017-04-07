@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Sign Up</title>
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href = "https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+       
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="description" content="ENG1003 Assignment 1 S2 2015">
+        <meta name="author" content="Group 36">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        
+        <link rel="shortcut icon" sizes="196x196" href="bubble-icon.png" />
+        <link rel="apple-touch-icon-precomposed" href="bubble-icon.png" />
+
+        <style>
+            body {background-image: url("img/background-texture.png");}
+        </style>
+        
+    </head>
+
+    <body id='body'>
+            <center><div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+              <!-- Title -->
+              <span class="mdl-layout-title"><b>JUST DO IT!</b> Fitness Tracker</span>
+              <!-- Add spacer, to align navigation to the right -->
+              <div class="mdl-layout-spacer"></div>
+              <!-- Navigation. We hide it in small screens. -->
+                  <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <!-- <a class="mdl-navigation__link" href="">Home</a>
+                    <a class="mdl-navigation__link" href="">Previous Runs</a>
+                    <a class="mdl-navigation__link" href="">Settings</a> -->
+
+                  </nav>
+            </div>
+        </header>
+
+       <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="signup">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Sign Up!</h2>
+            </div>
+
+            <div class="mdl-card__supporting-text">
+                Please enter your username and password below. Note that both are case sensitive.
+            </div>
+
+            <div class="mdl-card__actions mdl-card--border">
+                
+                <form action="runTrackerHomePage.html">
+                    
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="signupUsername"/>
+                        <label class="mdl-textfield__label">Username...</label>
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="signupPassword" />
+                        <label class="mdl-textfield__label">Password...</label>
+                    </div>
+                    
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onclick="signup()">
+                        Sign Up & Log in
+                    </button>
+                    
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="index.html">
+                        Back to log in
+                    </a>
+                    
+                </form>
+
+            </div>
+        </div>                                                     
+                </center>
+    <script>
+        
+        function signup() {
+            
+            updateLoginStatus(true);
+            
+            var username, password, retNames, storedNames, storedPasswords;
+            
+            username = document.getElementById("signupUsername").value;           //Retrieves username and password input
+            password = document.getElementById("signupPassword").value;
+            
+            document.getElementById("signupUsername").value = ""                  //Resets username and password boxes
+            document.getElementById("signupPassword").value = ""
+            
+            if (localStorage.getItem("Usernames") === null) {               //Catch if there are no usernames in system, and simply add user/pass
+                storedNames = [];
+                storedPasswords = [];
+            }
+            
+            else {                                                          //Otherwise have to read existing array out of local storage first
+                storedNames = JSON.parse(localStorage.getItem("Usernames"));    //Retrieve users/pass 3from local storage
+                storedPasswords = JSON.parse(localStorage.getItem("Passwords"));                
+            }
+            
+            storedNames.push(username);                                  //Appends username and password to the arrays
+            storedPasswords.push(password);
+            
+            localStorage.setItem("Usernames",JSON.stringify(storedNames));      //Writes these back into the database
+            localStorage.setItem("Passwords",JSON.stringify(storedPasswords));
+            localStorage.setItem("loggedInUser", username));
+            //LOGIN WITH THESE DETAILS
+        }
+        
+        //status parameter must be true or false (boolean)
+        function updateLoginStatus(status){
+            if(status === false){
+            var loginStatus = false;
+            localStorage.setItem("loginStatus", JSON.stringify(loginStatus))
+            }
+            else if(status === true){
+            var loginStatus = true;
+            JSON.stringify(localStorage.setItem("loginStatus", loginStatus))
+            }
+            else{
+                console.log("Error: updateStatus Parameter not a boolean")
+            };
+             
+        };
+            
+            
+    </script>
+    
+    </body>
+</html>
