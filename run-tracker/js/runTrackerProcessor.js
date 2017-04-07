@@ -17,31 +17,25 @@ navigator.geolocation.watchPosition(tracker); //follows position indefinitely an
 
 //Initialise the map
 function initMap() {
-    //initial settings
-	var initLatLng = {
-            lat: -37.817547,
-            lng: 144.967346
-        } //Flinders Street Station
-    var myOptions = {
-        center: initLatLng,
-        zoom: 17
-    };
     
-	map = new google.maps.Map(document.getElementById('map'), myOptions);
+	map = new google.maps.Map(document.getElementById('map'), {zoom: 17});
 
-/* 	//Puts the blue circle and region around your location
-    GeoMarker = new GeolocationMarker(map);            
+    //Puts the blue circle and region around your location
+    GeoMarker = new GeolocationMarker(map);
+
+    //Map centres on your current position
+    google.maps.event.addListenerOnce(GeoMarker, 'position_changed', function() {      //Get geolocation marker to follow movement
+        map.setCenter(this.getPosition());
+        map.fitBounds(this.getBounds());
+    });
+/* 	            
     
 	//Set Geolocation marker options
 	GeoMarker.setCircleOptions({
         fillColor: '#808080'
     });
 
-	//Map centres on your current position
-    google.maps.event.addListenerOnce(GeoMarker, 'position_changed', function() {      //Get geolocation marker to follow movement
-        map.setCenter(this.getPosition());
-        map.fitBounds(this.getBounds());
-    });
+	
 
 	//Print error message if GeoMarker fails
     google.maps.event.addListener(GeoMarker, 'geolocation_error', function(e) {         //Catch errors in geolocation
