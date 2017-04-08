@@ -4,6 +4,8 @@
 	
 	<!-- set content to size of user's screen -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <!--set character set-->
     <meta charset="utf-8">
@@ -11,13 +13,14 @@
 	<meta name="description" content="Brendan Holmes, Electrical and Computer Systems Engineering student">
 
     <!-- my custom style sheet-->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" media="(min-width: 720px)" href="css/style.css">
+    <link rel="stylesheet" media="(max-width: 719px)" href="css/style-small-screens.css">
 
     <!-- set title in browser tab -->
     <title>Brendan Holmes</title>
 
     <!-- set browser tab icon -->
-    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
 
 </head>
 		
@@ -26,11 +29,11 @@
 	<!-- Navigation bar -->
 	<header id="header">
 		<div id="nav-name-container">
-			<a id="nav-name" href="./index.html"><img id="title_image" src="./images/BRENDAN_HOLMES_TITLE.png"></a>
+			<a id="nav-name" href="./index.html"></a>
 		</div>
 
 		<div id="nav-link-container">
-			<ul style="float:right">
+			<ul>
 				<li class="nav-link"><a href="#projects">Projects</a></li>
 				<li class="nav-link"><a href="#about">About</a></li>
 				<li class="nav-link"><a href="./resume.pdf">CV</a></li>
@@ -50,9 +53,7 @@
 			<h2>Projects</h2>
 			<div class="project-item">
 				<a href="">
-					<div class="project-image">
-						<div id="project1"><img class="image" src="./images/bird.jpg"></div>
-					</div>
+					<div class="project-image" id="project1"></div>
 
 					<h3>Embedded multicore image decoder</h3>
 					<p>On an ALtera FPGA board, this system decodes compressed 640x480 mpeg video at 24fps. An IDCT hardware accelerator, written in VHDL, handles the most computationally intensive function.</p>
@@ -61,9 +62,7 @@
 
 			<div class="project-item">
 				<a href="./superpixels/main.html">
-					<div class="project-image">
-						<div id="project1"><img class="image" src="./images/main_05.jpg"></div>
-					</div>
+					<div class="project-image" id="project2"></div>
 
 					<h3>Superpixel algorithm implementation</h3>
 					<p>Superpixels are used as a precursor step to image segmentation. This project implements a state-of-the-art superpixel algorithm based on current image science literature.</p>
@@ -74,9 +73,7 @@
 
 				<a href="">				
 
-					<div class="project-image">
-						<div id="project1"><img class="image" src="./images/keil-board.jpg"></div>
-					</div>
+					<div class="project-image" id="project3"></div>
 
 					<h3>Real-time OS</h3>
 					<p>A single-threaded multiprogramming operating system that runs on an ARM microprocessor. Performs memory management, process dispatching and switching, interprocess communication, UART and timer interrupts and runs user processes using a custom command set.</p>
@@ -86,9 +83,7 @@
 			<div class="project-item">
 
 				<a href="./run-tracker/index.html">
-					<div class="project-image">
-						<div id="project1"><img class="image" src="./images/run-tracker.jpg"></div>
-					</div>
+					<div class="project-image" id="project4"></div>
 
 					<h3>Run Tracker (currently in alpha)</h3>
 					<p>Run Tracker saves your paths, generates useful statistics, and runs on all Apple and Android smartphones. Using Google Maps APIs, this is a useful and powerful mobile web application.</p>

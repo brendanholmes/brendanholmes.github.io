@@ -4,6 +4,7 @@ $(document).ready(function() {
     var $about = $('#about');
     var $header = $('#header');
     var $projects = $('#projects');
+    var $projectsContainer = $('#projects-container'); 
 
     var windowHeight = $(window).height();
     var windowWidth = $(window).width();
@@ -19,21 +20,27 @@ $(document).ready(function() {
 	    $about.height(windowHeight);
     }).trigger('resize');
 
+    //set height of about section
+    var $window = $(window).on('resize', function(){
+        $projects.height($projectsContainer.height());
+    }).trigger('resize');
 
 	//can combine all sections and set padding
     $projects.css('padding-left', function(){
-    	return windowWidth * 0.2;
+    	return windowWidth * 0.15;
     })
 
     $projects.css('padding-right', function(){
-    	return windowWidth * 0.2;
+    	return windowWidth * 0.15;
     })
 
     $about.css('padding-left', function(){
-    	return windowWidth * 0.2;
+    	return windowWidth * 0.15;
     })
 
     $about.css('padding-right', function(){
-    	return windowWidth * 0.2;
+    	return windowWidth * 0.15;
     })
+
+
 });

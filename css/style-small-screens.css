@@ -1,12 +1,13 @@
-@media (min-width: 720px) {
+@media (max-width: 719px) {
 
 /*GLOBAL*/
 body {
     margin: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #FFF;
-    color: #000;
+    color: #111;
 }
+
 
 /***NAV BAR***/
 
@@ -28,21 +29,25 @@ a {
 
 ul {
 	margin: 0;
-	float: right;
+}
+
+#nav-link-container {
+		display: none;
+		color: red;
+	}
 }
 
 #nav-name-container, #nav-link-container {
-	float: left;
 	color: #FFF;
 	width: 50%;
 	height: 100%;
 	margin: 0;
-	display: inline;
 	box-sizing: border-box;
 	padding: 0;
 }
 
 #nav-name-container{
+	width: 100%;
 	font-size: 27px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #111;
@@ -59,6 +64,7 @@ ul {
 	color: #111;
 	display: inline;
 	padding: 52px 0;
+	background-color: white;
 }
 
 .nav-link{
@@ -77,14 +83,13 @@ ul {
 	background-image: url(../images/cactus.png);
 	background-size: cover;
 	height: 1000px;
-	height: 100%;
-	position: relative;
 }
 
 #welcome {
     position: absolute;
     top: 50%;
     left: 50%;
+    margin-right: -50%;
     transform: translate(-50%, -50%);
 	font-size: 20px;
 	max-width: 420px;
@@ -110,6 +115,7 @@ ul {
 #CV-home-link:hover {
 	opacity: 0.7;
 	background-color: #EEE;
+	
 }
 
 /***PROJECTS***/
@@ -125,8 +131,9 @@ ul {
 
 .project-item {
 	padding: 15px 15px;
-	margin: 50px 0;
+	margin:  10px;
 	max-width: 650px;
+	height: 100%;
 }
 
 .project-item:hover {
@@ -139,7 +146,7 @@ ul {
 	height: 200px;
 	padding: 0 0 0 0;
 	margin: 0 40px 0 0;
-	float: left;
+	background: #999;
 }
 
 #project1 {
@@ -216,7 +223,7 @@ footer {
 	opacity: 0.6;
 }
 
-/**end footer**/
 
 
-}/* END MEDIA RULE */
+/***/
+}
