@@ -210,11 +210,9 @@ footer {
 #contact-container {
 	height: 100%;
 	margin: 0 auto;
-	max-width: 500px;
 }
 
 .contact-icon {
-	padding: 10px 20px;
 	height: 57px;
 	width: auto;
 }
