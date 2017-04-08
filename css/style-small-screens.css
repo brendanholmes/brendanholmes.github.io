@@ -82,7 +82,9 @@ ul {
 	/*background-image: url("./images/home-background.jpg");*/
 	background-image: url(../images/cactus.png);
 	background-size: cover;
+	back
 	height: 1000px;
+	margin-bottom: 60px;
 }
 
 #welcome {
@@ -90,12 +92,13 @@ ul {
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -50%);
 	font-size: 20px;
 	max-width: 420px;
 	text-align: justify;
     -moz-text-align-last: center;
     text-align-last: center;
+    margin: 40px 0;
 }
 
 #CV-home-link {
@@ -191,7 +194,7 @@ ul {
 
 .profile-image{
 	display: block;
-	margin: 0 auto;
+	margin: 40px auto;
 	width: 180px;
 	height: 180px;
 	
