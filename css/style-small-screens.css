@@ -90,7 +90,7 @@ ul {
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
 	font-size: 20px;
 	max-width: 420px;
 	text-align: justify;
@@ -212,8 +212,9 @@ footer {
 }
 
 .contact-icon {
-	height: 57px;
+	height: 40px;
 	width: auto;
+	padding: 30px 5px;
 }
 
 .contact-icon:hover{
